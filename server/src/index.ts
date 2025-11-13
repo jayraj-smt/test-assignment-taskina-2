@@ -31,8 +31,8 @@ const startServer = async () => {
     const authenticatePromise = sequelize.authenticate()
     const timeoutPromise = new Promise((_, reject) =>
       setTimeout(
-        () => reject(new Error('Database connection timeout after 10 seconds')),
-        10000
+        () => reject(new Error('Database connection timeout after 30 seconds')),
+        30000
       )
     )
 
@@ -43,8 +43,8 @@ const startServer = async () => {
     const syncPromise = sequelize.sync({ alter: false })
     const syncTimeoutPromise = new Promise((_, reject) =>
       setTimeout(
-        () => reject(new Error('Database sync timeout after 15 seconds')),
-        15000
+        () => reject(new Error('Database sync timeout after 30 seconds')),
+        30000
       )
     )
 
