@@ -83,13 +83,11 @@ function App() {
               {showRegister ? <RegisterForm /> : <LoginForm />}
             </div>
           ) : (
-            <>
-              <CreatePostForm
-                onPostCreated={() => postListRef.current?.refresh()}
-              />
-              <PostList ref={postListRef} />
-            </>
+            <CreatePostForm
+              onPostCreated={() => postListRef.current?.refresh()}
+            />
           )}
+          <PostList ref={postListRef} />
         </main>
       </div>
     </AuthContext.Provider>
