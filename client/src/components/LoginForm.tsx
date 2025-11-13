@@ -30,7 +30,7 @@ const LoginForm: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit} className='form'>
-      <h2>Login</h2>
+      <h2>Sign in to participate</h2>
       {error && <div className='error-message'>{error}</div>}
       <div className='form-group'>
         <label htmlFor='username'>Username</label>

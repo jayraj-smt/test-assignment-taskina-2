@@ -80,7 +80,6 @@ function App() {
         <main className='app-main'>
           {!user ? (
             <div className='auth-container'>
-              <h2 style={{ marginBottom: '1rem' }}>Sign in to participate</h2>
               {showRegister ? <RegisterForm /> : <LoginForm />}
             </div>
           ) : (
