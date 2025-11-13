@@ -22,12 +22,14 @@ interface OperationItemProps {
   operation: Operation
   postId: number
   onOperationCreated: () => void
+  isAuthenticated: boolean
 }
 
 const OperationItem: React.FC<OperationItemProps> = ({
   operation,
   postId,
   onOperationCreated,
+  isAuthenticated,
 }) => {
   const [showOperationForm, setShowOperationForm] = useState(false)
 
@@ -79,12 +81,14 @@ const OperationItem: React.FC<OperationItemProps> = ({
             {parseFloat(operation.rightOperand.toString())} ={' '}
             {parseFloat(operation.result.toString())}
           </div>
-          <button
-            onClick={() => setShowOperationForm(!showOperationForm)}
-            className='reply-btn'
-          >
-            Reply
-          </button>
+          {isAuthenticated && (
+            <button
+              onClick={() => setShowOperationForm(!showOperationForm)}
+              className='reply-btn'
+            >
+              Reply
+            </button>
+          )}
         </div>
       </div>
 
@@ -106,6 +110,7 @@ const OperationItem: React.FC<OperationItemProps> = ({
               operation={child}
               postId={postId}
               onOperationCreated={onOperationCreated}
+              isAuthenticated={isAuthenticated}
             />
           ))}
         </div>

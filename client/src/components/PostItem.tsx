@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import OperationItem from './OperationItem'
 import OperationForm from './OperationForm'
+import { AuthContext } from '../context/AuthContext'
 import './PostItem.css'
 
 interface User {
@@ -33,6 +34,7 @@ interface PostItemProps {
 }
 
 const PostItem: React.FC<PostItemProps> = ({ post, onUpdate }) => {
+  const { user } = useContext(AuthContext)
   const [showOperationForm, setShowOperationForm] = useState(false)
   const [selectedParentId, setSelectedParentId] = useState<number | null>(null)
 
@@ -73,9 +75,11 @@ const PostItem: React.FC<PostItemProps> = ({ post, onUpdate }) => {
               Starting Number: {parseFloat(post.startingNumber.toString())}
             </strong>
           </div>
-          <button onClick={() => handleReply(null)} className='reply-btn'>
-            Reply
-          </button>
+          {user && (
+            <button onClick={() => handleReply(null)} className='reply-btn'>
+              Reply
+            </button>
+          )}
         </div>
       </div>
 
@@ -100,6 +104,7 @@ const PostItem: React.FC<PostItemProps> = ({ post, onUpdate }) => {
               operation={operation}
               postId={post.id}
               onOperationCreated={handleOperationCreated}
+              isAuthenticated={!!user}
             />
           ))}
         </div>
