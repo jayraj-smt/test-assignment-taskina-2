@@ -20,11 +20,15 @@ A full-stack application where users communicate through numbers and mathematica
 2. **Set up environment variables:**
 
    ```bash
-   cp env.example .env
+   cp .env.example .env
    cd server && cp .env.example .env
+   cd ../client && cp .env.example .env
    ```
 
-   Note: Update the `.env` file in the `server` directory with your database credentials if needed.
+   Note:
+
+   - Update the `.env` file in the `server` directory with your database credentials if needed.
+   - The `client/.env` file contains the API URL. For production, it's set to the Render server. For local development, change `REACT_APP_API_URL` to `http://localhost:5000/api`.
 
 3. **Start PostgreSQL with Docker Compose:**
 
